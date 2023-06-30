@@ -1,3 +1,6 @@
+//If you only need to build on CI, then you don't need JDebPackaging :)
+enablePlugins(JavaServerAppPackaging, SystemdPlugin, DebianPlugin, JDebPackaging)
+
 ThisBuild / version := "1.0"
 
 ThisBuild / scalaVersion := "2.13.11"
