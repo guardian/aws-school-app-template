@@ -2,7 +2,9 @@ name: Build and upload
 
 on:
   push:
-    branchs: ["main"]
+    branches: ["main"]
+  pull_request:
+    branches: [ "main" ]
   workflow_dispatch: {}
 
 jobs:
@@ -46,7 +48,7 @@ jobs:
           configPath: ./riff-raff.yaml
           projectName: Training::AWS App Template
           contentDirectories: |
-            concierge-graphql:
+            aws-school-app-template:
               - target/aws-school-app-template_1.0_all.deb
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
