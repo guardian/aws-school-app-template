@@ -23,6 +23,7 @@ exports[`The AwsSchoolAppTemplate stack matches the snapshot 1`] = `
       "GuApplicationLoadBalancer",
       "GuApplicationTargetGroup",
       "GuHttpsApplicationListener",
+      "GuCname",
     ],
     "gu:cdk:version": "TEST",
   },
@@ -710,6 +711,23 @@ exports[`The AwsSchoolAppTemplate stack matches the snapshot 1`] = `
         "ToPort": 9000,
       },
       "Type": "AWS::EC2::SecurityGroupIngress",
+    },
+    "dnsName": {
+      "Properties": {
+        "Name": "simple-example.gutools.co.uk",
+        "RecordType": "CNAME",
+        "ResourceRecords": [
+          {
+            "Fn::GetAtt": [
+              "LoadBalancerAwsschoolapptemplateEDF0974E",
+              "DNSName",
+            ],
+          },
+        ],
+        "Stage": "TEST",
+        "TTL": 1200,
+      },
+      "Type": "Guardian::DNS::RecordSet",
     },
     "playgroundTESTawsschoolapptemplate30FBFE88": {
       "Properties": {
