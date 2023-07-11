@@ -23,6 +23,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+          cache-dependency-path: cdk/package-lock.json
+
+      - run: npm ci
+        name: Prepare for CDK infrastructure build
+        working-directory: cdk
+      - run: npm test
+        name: Test CDK infrastructure integrity
+        working-directory: cdk
+      - run: npm run synth
+        name: Build infrastructure definition from CDK
+        working-directory: cdk
+
       - name: Setup JDK
         uses: actions/setup-java@v3
         with:
@@ -50,6 +66,10 @@ jobs:
           contentDirectories: |
             aws-school-app-template:
               - target/aws-school-app-template_1.0_all.deb
+            cloudformation:
+              - cdk/cdk.out/AwsSchoolAppTemplate-PROD.template.json
+              - cdk/cdk.out/AwsSchoolAppTemplate-CODE.template.json
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()  #runs even if there is a test failure
