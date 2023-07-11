@@ -5,7 +5,7 @@ stacks:
 deployments:
   cloudformation:
     type: cloud-formation
-    app: apple-news
+    app: aws-school-app-template
     parameters:
       templateStagePaths:
         CODE: AwsSchoolAppTemplate-CODE.template.json
