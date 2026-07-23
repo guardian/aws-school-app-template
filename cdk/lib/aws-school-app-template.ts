@@ -26,6 +26,7 @@ export class AwsSchoolAppTemplate extends GuStack {
         domainName,
       },
       instanceType: InstanceType.of(InstanceClass.T4G, InstanceSize.NANO),
+      instanceMetricGranularity: "5Minute",
       monitoringConfiguration: {
         noMonitoring: true,
       },
@@ -38,7 +39,8 @@ export class AwsSchoolAppTemplate extends GuStack {
           fileName: "aws-school-app-template_1.0_all.deb",
           executionStatement: "dpkg -i aws-school-app-template/aws-school-app-template_1.0_all.deb"
         }
-      }
+      },
+      withAccessLogging: false,
     });
 
     new GuCname(this, "dnsName", {
