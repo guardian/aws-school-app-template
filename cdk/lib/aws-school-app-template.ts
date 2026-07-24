@@ -34,6 +34,11 @@ export class AwsSchoolAppTemplate extends GuStack {
         minimumInstances: 2,
         maximumInstances: 4
       },
+      imageRecipe: {
+				Recipe: "ubuntu-jammy-feast-arm-jdk21",
+				Encrypted: true,
+				AmigoStage: "PROD",
+			},
       userData: {
         distributable: {
           fileName: "aws-school-app-template_1.0_all.deb",
@@ -43,6 +48,7 @@ export class AwsSchoolAppTemplate extends GuStack {
       withAccessLogging: false,
     });
 
+    
     new GuCname(this, "dnsName", {
       domainName,
       resourceRecord: stack.loadBalancer.loadBalancerDnsName,
