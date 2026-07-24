@@ -58,7 +58,7 @@ jobs:
           contentDirectories: |
             aws-school-app-template:
               - target/aws-school-app-template_1.0_all.deb
-            cloudformation:
+            cdk.out:
               - cdk/cdk.out/AwsSchoolAppTemplate-PROD.template.json
               - cdk/cdk.out/AwsSchoolAppTemplate-CODE.template.json
 
