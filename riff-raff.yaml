@@ -1,9 +1,24 @@
 regions:
   - eu-west-1
 stacks:
-  - content-api
+  - playground
 deployments:
-  concierge-graphql:
+  cloudformation:
+    type: cloud-formation
+    app: aws-school-app-template
+    parameters:
+      templateStagePaths:
+        CODE: AwsSchoolAppTemplate-CODE.template.json
+        PROD: AwsSchoolAppTemplate-PROD.template.json
+      amiParameter: AMIAwsschoolapptemplate
+      amiEncrypted: true
+      amiTags:
+        Recipe: ubuntu-focal-capi-arm-jdk11
+        AmigoStage: PROD
+        BuiltBy: amigo
+
+  aws-school-app-template:
     type: autoscaling
     parameters:
       bucketSsmLookup: true
+    dependencies: [cloudformation]
