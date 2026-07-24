@@ -53,7 +53,7 @@ jobs:
         with:
           roleArn: ${{ secrets.GU_RIFF_RAFF_ROLE_ARN }}
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-          configPath: ./riff-raff.yaml
+          configPath: ./cdk/cdk.out/riff-raff.yaml
           projectName: Training::AWS App Template
           contentDirectories: |
             aws-school-app-template:
