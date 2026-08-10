@@ -12,6 +12,7 @@ lazy val root = (project in file("."))
       "org.http4s" %% "http4s-core" % "0.23.36",
       "org.http4s" %% "http4s-dsl" % "0.23.36",
       "org.http4s" %% "http4s-ember-server" % "0.23.36",
+      "software.amazon.awssdk" % "s3" % "2.31.30",
       "ch.qos.logback" % "logback-classic" % "1.5.38",
       "net.logstash.logback" % "logstash-logback-encoder" % "8.1",
     )
